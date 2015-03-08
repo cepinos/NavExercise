@@ -1,4 +1,18 @@
-/* Variables */
+/*Content*/
+body {
+  background-image: url('/images/background-image.jpg');
+  background-position: center 72px;
+  background-repeat: no-repeat;
+}
+.content {
+  max-width: 968px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+article {
+  padding: 60px 0;
+}
+/*End Content*/
 /* Fonts */
 @font-face {
   font-family: 'HUGEAvantGardeBold';
@@ -17,46 +31,148 @@
   src: url("/fonts/GalaxieCopernicus-BookItalic.eot?#iefix") format("embedded-opentype"), url("/fonts/GalaxieCopernicus-BookItalic.woff") format("woff"), url("/fonts/GalaxieCopernicus-BookItalic.svg#svgFontName") format("svg");
 }
 /* End Fonts */
+/*Global*/
+#overlay {
+  background: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  display: none;
+}
+/*End Global*/
+/*Hero*/
+.hero {
+  text-align: center;
+  height: 640px;
+  display: table-cell;
+  vertical-align: middle;
+  color: white;
+}
+/*End Hero*/
+/* Navbar styles*/
+.navbar {
+  color: white;
+  background-color: #ec008c;
+  position: relative;
+  z-index: 2;
+}
+.navbar .navbar-primary .brand {
+  /*brand Styles*/
+  margin-right: 24px;
+}
+.navbar .navbar-primary .brand a {
+  /*brand Styles*/
+  color: transparent;
+  background-image: url('/images/HUGE-white.png');
+  background-size: 60px 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+  height: 24px;
+  width: 60px;
+}
+.navbar .navbar-primary .brand a:hover {
+  color: transparent;
+  background-image: url('/images/HUGE-magenta.png');
+}
+.navbar .navbar-primary li {
+  /*Primary menu item*/
+  display: inline-block;
+  vertical-align: middle;
+}
+.navbar .navbar-primary li span,
+.navbar .navbar-primary li a {
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  color: white;
+  display: block;
+  height: 24px;
+  line-height: 24px;
+  padding: 24px;
+}
+.navbar .navbar-primary li.active span,
+.navbar .navbar-primary li:hover span,
+.navbar .navbar-primary li.active a,
+.navbar .navbar-primary li:hover a {
+  background-color: white;
+  color: #ec008c;
+}
+.navbar .navbar-primary li.active .navbar-secondary {
+  display: block;
+}
+.navbar .navbar-secondary {
+  display: none;
+  position: absolute;
+  background: white;
+}
+.navbar .navbar-secondary li a {
+  padding: 12px;
+  color: black;
+}
+.navbar .navbar-secondary li a:hover {
+  background-color: #eeeeee;
+  color: #ec008c;
+}
+/* End Navbar styles*/
+/* Normalizing some styles for chrome*/
+h1,
+h2,
+h3,
+h4,
+nav,
+ul,
+li,
+body {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+/* End Normalizing some styles for chrome*/
+/************************************************/
+/******            MOBILE DEVICES           ******/
+/************************************************/
 /* Typography */
 /* Navigation Typography */
 .navbar .navbar-primary {
   /* Primary Navigation 21/48 HUGE Avant Garde Bold */
-  font-family: 'HUGEAvantGardeBold';
-  font-size: 21px 'HUGEAvantGardeBold';
-  line-height: 48px;
+  font: 21px/48px 'HUGEAvantGardeBold';
 }
-.navbar .navbar-secundary {
+.navbar .navbar-secondary {
   /* Secondary Navigation 16/48 Galaxie Copernicus Book */
-  font-family: 'Galaxie';
-  font-size: 16px;
-  line-height: 48px;
+  font: 16px/48px 'Galaxie';
 }
 /* End Navigation Typography */
 h1 {
-  /* Headline (Mobile) 44/48 HUGE Avant Garde Bold */
-  font: 44px/48px 'HUGEAvantGardeBold';
+  /* Headline (Desktop) 120/132 HUGE Avant Garde Bold */
+  font: 120px/132px 'HUGEAvantGardeBold';
 }
 body {
-  /* Body Copy (Mobile) 14/24 Galaxie Copernicus Book */
-  font: 14px/24px 'Galaxie';
+  /* Body Copy (Desktop) 24/36 Galaxie Copernicus Book */
+  font: 24px/36px 'Galaxie';
 }
-/* Copyright (Mobile) 12/16 Helvetica Neue Regular */
-.copyright {
-  font: 12px/16px 'HelveticaNeue';
-}
-/* Desktop Styles */
-@media (min-width: 768px) {
+/* Mobile Styles */
+@media (max-width: 767px) {
   h1 {
-    /* Headline (Desktop) 120/132 HUGE Avant Garde Bold */
-    font: 120px/132px 'HUGEAvantGardeBold';
+    /* Headline (Mobile) 44/48 HUGE Avant Garde Bold */
+    font: 44px/48px 'HUGEAvantGardeBold';
   }
   body {
-    /* Body Copy (Desktop) 24/36 Galaxie Copernicus Book */
-    font: 24px/36px 'Galaxie';
+    /* Body Copy (Mobile) 14/24 Galaxie Copernicus Book */
+    font: 14px/24px 'Galaxie';
+  }
+  /* Copyright (Mobile) 12/16 Helvetica Neue Regular */
+  .copyright {
+    font: 12px/16px 'HelveticaNeue';
   }
 }
 /* End Typography */
-/************************************************/
-/******            DESKTOP DEVICES           ******/
-/************************************************/
+/* Variables */
 /*# sourceMappingURL=main.css.map */

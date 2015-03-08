@@ -1,0 +1,73 @@
+/* Navbar styles*/
+.navbar{
+  color: white;
+  background-color: @magenta;
+  position: relative;
+  z-index: 2;
+  .navbar-primary{
+    .brand{
+      /*brand Styles*/
+      margin-right: 24px;
+      a{
+        /*brand Styles*/
+        color: transparent;
+        background-image: url('/images/HUGE-white.png');
+        background-size: 60px 24px;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: block;
+        height: 24px;
+        width: 60px;
+        &:hover{
+          color: transparent;
+          background-image: url('/images/HUGE-magenta.png');
+        }
+      }
+    }
+    li{
+      /*Primary menu item*/
+      display: inline-block;
+      vertical-align: middle;
+      span,
+      a{
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: pointer;
+        color: white;
+        display: block;
+        height: 24px;
+        line-height: 24px;
+        padding: 24px;
+      }
+      &.active,
+      &:hover{
+        span,
+        a{
+          background-color: white;
+          color: @magenta;
+        }
+      }
+      &.active{
+        .navbar-secondary{
+          display: block;
+        }
+      }
+    }
+  }
+  .navbar-secondary{
+    display: none;
+    position: absolute;
+    background: white;
+    li{
+      a{
+        padding: 12px;
+        color: black;
+        &:hover{
+          background-color: @lightGray;
+          color: @magenta;
+        }
+      }
+    }
+  }
+}
+/* End Navbar styles*/
