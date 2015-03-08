@@ -3,41 +3,37 @@
 .navbar{
   .navbar-primary{
     /* Primary Navigation 21/48 HUGE Avant Garde Bold */
-    font-family: 'HUGEAvantGardeBold';
-    font-size: 21px 'HUGEAvantGardeBold';
-    line-height: 48px;
+    font: 21px/48px 'HUGEAvantGardeBold';
   }
-  .navbar-secundary{
+  .navbar-secondary{
     /* Secondary Navigation 16/48 Galaxie Copernicus Book */
-    font-family: 'Galaxie';
-    font-size: 16px;
-    line-height: 48px;
+    font: 16px/48px 'Galaxie';
   }
 }
 /* End Navigation Typography */
 
 h1{
-  /* Headline (Mobile) 44/48 HUGE Avant Garde Bold */
-  font: 44px/48px 'HUGEAvantGardeBold';
+  /* Headline (Desktop) 120/132 HUGE Avant Garde Bold */
+  font: 120px/132px 'HUGEAvantGardeBold';
 }
 body{
-  /* Body Copy (Mobile) 14/24 Galaxie Copernicus Book */
-  font: 14px/24px 'Galaxie';
-}
-/* Copyright (Mobile) 12/16 Helvetica Neue Regular */
-.copyright{
-  font: 12px/16px 'HelveticaNeue';
+  /* Body Copy (Desktop) 24/36 Galaxie Copernicus Book */
+  font: 24px/36px 'Galaxie';
 }
 
-/* Desktop Styles */
-@media (min-width:@desktop-size) {
+/* Mobile Styles */
+@media (max-width:@mobile-size) {
   h1{
-    /* Headline (Desktop) 120/132 HUGE Avant Garde Bold */
-    font: 120px/132px 'HUGEAvantGardeBold';
+    /* Headline (Mobile) 44/48 HUGE Avant Garde Bold */
+    font: 44px/48px 'HUGEAvantGardeBold';
   }
   body{
-    /* Body Copy (Desktop) 24/36 Galaxie Copernicus Book */
-    font: 24px/36px 'Galaxie';
+    /* Body Copy (Mobile) 14/24 Galaxie Copernicus Book */
+    font: 14px/24px 'Galaxie';
+  }
+  /* Copyright (Mobile) 12/16 Helvetica Neue Regular */
+  .copyright{
+    font: 12px/16px 'HelveticaNeue';
   }
 }
 
