@@ -17,6 +17,7 @@
   src: url("/fonts/GalaxieCopernicus-BookItalic.eot?#iefix") format("embedded-opentype"), url("/fonts/GalaxieCopernicus-BookItalic.woff") format("woff"), url("/fonts/GalaxieCopernicus-BookItalic.svg#svgFontName") format("svg");
 }
 /* End Fonts */
+/* Typography */
 /* Navigation Typography */
 .navbar .navbar-primary {
   /* Primary Navigation 21/48 HUGE Avant Garde Bold */
@@ -30,6 +31,7 @@
   font-size: 16px;
   line-height: 48px;
 }
+/* End Navigation Typography */
 h1 {
   /* Headline (Mobile) 44/48 HUGE Avant Garde Bold */
   font: 44px/48px 'HUGEAvantGardeBold';
@@ -53,7 +55,7 @@ body {
     font: 24px/36px 'Galaxie';
   }
 }
-/* End Navigation Typography */
+/* End Typography */
 /************************************************/
 /******            DESKTOP DEVICES           ******/
 /************************************************/
