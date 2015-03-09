@@ -1,0 +1,41 @@
+/*Chevron*/
+.chevron{
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  height: 24px;
+  width: 24px;
+  padding: 12px;
+  display: none;
+
+}
+.chevron:before,
+{
+  border-style: solid;
+  border-width: 0 0 0.15em 0.15em;
+  content: '';
+  display: inline-block;
+  height: 0.6em;
+  left: 4px;
+  position: relative;
+  top: 0;
+  transform: rotate(-45deg);
+  vertical-align: top;
+  width: 0.6em;
+  color: @magenta;
+}
+.chevron{
+  &.rotate180{
+    &:before{
+      top: 8px;
+      transform: rotate(135deg);
+    }
+  }
+}
+@media (max-width:@mobile-size) {
+  .chevron{
+    /*mobile*/
+    display: block;
+  }
+}

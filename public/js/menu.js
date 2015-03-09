@@ -1,10 +1,13 @@
 'use strict';
 
-var menu = (function(d){
+var menu = (function(d, w){
   // Private Attributes
   var primaryMenuItems,
   overlay,
-
+  hamburguer,
+  content,
+  primaryMenu,
+  navbar,
   // Private functions
   init = function(){
     // Initialize attributes
@@ -13,23 +16,33 @@ var menu = (function(d){
     // Initialize event listeners
     clickPrimaryMenuItem();
     clickOutSide();
+    showMenuOnHamburguer();
+    onResize();
   },
   initializeAttributes = function(){
     primaryMenuItems = d.querySelectorAll('.navbar-primary > li');
     overlay = d.getElementById('overlay');
+    hamburguer = d.getElementById('hamburguer');
+    navbar = d.getElementById('navbar');
+    content = d.getElementById('content');
   },
   // Hide secondary menu and overlay
   hideSecondaryAndOverlay = function(event){
     // Checking if the event was outside menu
     if(event){
-      var isOutsideNavbar = clickedOutsideElement('navbar');
+      var isOutsideNavbar = clickedElement('overlay');
     }
-    // Hiddin secondary menu and overlay
+    // Hiding secondary menu and overlay
     if(isOutsideNavbar || !event){
       each.call(primaryMenuItems, function(item, index){
-         item.classList.remove('active');
+        item.classList.remove('active');
+        var chevron = item.querySelector('.chevron');
+
+        if(chevron){
+          chevron.classList.remove('rotate180');
+        }
       });
-      overlay.style.display = 'none';
+      overlay.style.display = content.classList.contains('menu-active') ? 'block' : 'none';
     }
   },
   // Listening click event in document
@@ -40,14 +53,21 @@ var menu = (function(d){
   showSecondaryAndOverlay = function(menuItem){
     var eventListener = function(event){
       var secondary = menuItem.querySelector('.navbar-secondary');
+      var chevron = menuItem.querySelector('.chevron');
       // Hide all secondary menus and overlay
-      hideSecondaryAndOverlay();
       // If there is a secondary menu show it and show overlay
       if(secondary){
-        menuItem.classList.add('active');
-
+        menuItem.classList.toggle('active');
+        var isActive = menuItem.classList.contains('active');
+        hideSecondaryAndOverlay();
+        isActive ? menuItem.classList.add('active') : menuItem.classList.remove('active');
+        if(chevron){
+          isActive ? chevron.classList.add('rotate180') : chevron.classList.remove('rotate180');
+        }
         //show overlay
-        overlay.style.display = 'block';
+        overlay.style.display = isActive ||
+                                content.classList.contains('menu-active')
+                                ? 'block' : 'none';
       }
     }
     return eventListener
@@ -58,21 +78,22 @@ var menu = (function(d){
       item.addEventListener('click', showSecondaryAndOverlay(item));
     });
   },
+
+
   // aux functions
   each = function(callback){
-    console.log('each');
     for (var i = this.length - 1; i >= 0; i--) {
       callback(this[i], i);
     }
   },
-  clickedOutsideElement = function(elemId) {
+  clickedElement = function(elemId) {
     var theElem = getEventTarget(window.event);
     while(theElem != null) {
       if(theElem.id == elemId)
-        return false;
+        return true;
       theElem = theElem.offsetParent;
     }
-    return true;
+    return false;
   },
   getEventTarget = function(evt) {
     var targ = (evt.target) ? evt.target : evt.srcElement;
@@ -81,10 +102,30 @@ var menu = (function(d){
         targ = targ.parentNode;
     }
     return targ;
+  },
+  toggleMenu = function(event){
+    navbar.classList.toggle('menu-active');
+    content.classList.toggle('menu-active');
+    overlay.style.display = content.classList.contains('menu-active') ? 'block' : 'none';
+  },
+  hideMenu = function(event){
+    navbar.classList.remove('menu-active');
+    content.classList.remove('menu-active');
+    overlay.style.display = 'none';
+  },
+  /*hamburguer*/
+  showMenuOnHamburguer = function(){
+    hamburguer.addEventListener('click', toggleMenu);
+  },
+  onResize = function(){
+    w.addEventListener("resize", function(){
+      hideMenu();
+      hideSecondaryAndOverlay();
+    });
   }
 
   // Public Api
   return {
     "init":init
   }
-})(document);
+})(document, window);

@@ -1,9 +1,42 @@
 /*Hero*/
+
+.content{
+  background-image: url('/images/background-image.jpg');
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: auto 640px;
+}
+
+
 .hero{
   text-align: center;
   height: 640px;
-  display: table-cell;
-  vertical-align: middle;
-  color: white;
+  line-height: 640px;
+  h1{
+    color: @white;
+    display: inline-block;
+    vertical-align: middle;
+  }
 }
+
+/*Mobile*/
+@media (max-width:@mobile-size) {
+  .content{
+    background-size: auto 240px;
+    article{
+      padding: 0;
+    }
+  }
+  .hero{
+    display: block;
+    padding-top: 240px;
+    line-height: normal;
+    height: auto;
+    h1{
+      padding: 50px 0;
+      color: @black;
+    }
+  }
+}
+
 /*End Hero*/

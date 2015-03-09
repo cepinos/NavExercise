@@ -1,18 +1,79 @@
-/*Content*/
-body {
-  background-image: url('/images/background-image.jpg');
-  background-position: center 72px;
-  background-repeat: no-repeat;
+/*Chevron*/
+.chevron {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  height: 24px;
+  width: 24px;
+  padding: 12px;
+  display: none;
 }
+.chevron:before {
+  border-style: solid;
+  border-width: 0 0 0.15em 0.15em;
+  content: '';
+  display: inline-block;
+  height: 0.6em;
+  left: 4px;
+  position: relative;
+  top: 0;
+  transform: rotate(-45deg);
+  vertical-align: top;
+  width: 0.6em;
+  color: #ec008c;
+}
+.chevron.rotate180:before {
+  top: 8px;
+  transform: rotate(135deg);
+}
+@media (max-width: 767px) {
+  .chevron {
+    /*mobile*/
+    display: block;
+  }
+}
+/*close*/
+.close {
+  /*close*/
+  background-image: url('/images/toggle-close.svg');
+  background-position: center center;
+  padding: 20px 24px;
+  width: 24px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+/*End close*/
+/*Content*/
 .content {
+  min-width: 100vw;
+  -webkit-transition: margin-left 333ms ease-in-out;
+  transition: margin-left 333ms ease-in-out;
+}
+.content .container {
   max-width: 968px;
   margin: 0 auto;
   padding: 0 24px;
 }
-article {
+.content article {
   padding: 60px 0;
 }
+@media (max-width: 767px) {
+  .content.menu-active {
+    margin-left: 80%;
+  }
+}
 /*End Content*/
+/*Chevron*/
+.copyright {
+  color: #000000;
+  position: absolute;
+  bottom: 0;
+  height: 16px;
+  width: 100%;
+  padding: 16px 24px;
+}
 /* Fonts */
 @font-face {
   font-family: 'HUGEAvantGardeBold';
@@ -31,51 +92,95 @@ article {
   src: url("/fonts/GalaxieCopernicus-BookItalic.eot?#iefix") format("embedded-opentype"), url("/fonts/GalaxieCopernicus-BookItalic.woff") format("woff"), url("/fonts/GalaxieCopernicus-BookItalic.svg#svgFontName") format("svg");
 }
 /* End Fonts */
-/*Global*/
-#overlay {
-  background: rgba(0, 0, 0, 0.5);
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1;
+/*Hamburger*/
+.hamburguer {
+  /*Hamburger*/
+  background-image: url('/images/toggle-open.svg');
+  background-position: center center;
+  padding: 20px 24px;
+  width: 24px;
+  height: 20px;
+  vertical-align: middle;
   display: none;
+  position: absolute;
+  left: 0;
+  -webkit-transition: left 333ms ease-in-out;
+  transition: left 333ms ease-in-out;
 }
-/*End Global*/
+/*End Hamburger*/
 /*Hero*/
+.content {
+  background-image: url('/images/background-image.jpg');
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: auto 640px;
+}
 .hero {
   text-align: center;
   height: 640px;
-  display: table-cell;
+  line-height: 640px;
+}
+.hero h1 {
+  color: #ffffff;
+  display: inline-block;
   vertical-align: middle;
-  color: white;
+}
+/*Mobile*/
+@media (max-width: 767px) {
+  .content {
+    background-size: auto 240px;
+  }
+  .content article {
+    padding: 0;
+  }
+  .hero {
+    display: block;
+    padding-top: 240px;
+    line-height: normal;
+    height: auto;
+  }
+  .hero h1 {
+    padding: 50px 0;
+    color: #000000;
+  }
 }
 /*End Hero*/
 /* Navbar styles*/
 .navbar {
-  color: white;
+  /*Desktop*/
+  color: #ffffff;
   background-color: #ec008c;
   position: relative;
   z-index: 2;
-}
-.navbar .navbar-primary .brand {
+  height: 72px;
   /*brand Styles*/
-  margin-right: 24px;
 }
-.navbar .navbar-primary .brand a {
+.navbar .brand {
   /*brand Styles*/
-  color: transparent;
   background-image: url('/images/HUGE-white.png');
-  background-size: 60px 24px;
-  background-repeat: no-repeat;
   background-position: center;
-  display: block;
-  height: 24px;
-  width: 60px;
-}
-.navbar .navbar-primary .brand a:hover {
+  background-repeat: no-repeat;
+  background-size: 60px 24px;
   color: transparent;
+  display: inline-block;
+  height: 24px;
+  margin-right: 24px;
+  padding: 24px;
+  vertical-align: middle;
+  width: 60px;
+  -webkit-transition: left 333ms ease-in-out;
+  transition: left 333ms ease-in-out;
+}
+.navbar .brand:hover {
+  color: transparent;
+  background-color: #ffffff;
   background-image: url('/images/HUGE-magenta.png');
+}
+.navbar .navbar-primary {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transition: left 333ms ease-in-out;
+  transition: left 333ms ease-in-out;
 }
 .navbar .navbar-primary li {
   /*Primary menu item*/
@@ -87,7 +192,7 @@ article {
   -webkit-user-select: none;
   user-select: none;
   cursor: pointer;
-  color: white;
+  color: #ffffff;
   display: block;
   height: 24px;
   line-height: 24px;
@@ -97,27 +202,115 @@ article {
 .navbar .navbar-primary li:hover span,
 .navbar .navbar-primary li.active a,
 .navbar .navbar-primary li:hover a {
-  background-color: white;
+  background-color: #ffffff;
   color: #ec008c;
 }
 .navbar .navbar-primary li.active .navbar-secondary {
   display: block;
 }
+.navbar .navbar-primary li.active .navbar-secondary li a {
+  color: #000000;
+}
+.navbar .navbar-primary li.active .navbar-secondary li a:hover {
+  color: #ec008c;
+}
 .navbar .navbar-secondary {
   display: none;
   position: absolute;
-  background: white;
+  background: #ffffff;
 }
 .navbar .navbar-secondary li a {
   padding: 12px;
-  color: black;
+  color: #000000;
 }
 .navbar .navbar-secondary li a:hover {
   background-color: #eeeeee;
   color: #ec008c;
 }
+/*Mobile*/
+@media (max-width: 767px) {
+  .navbar {
+    height: 60px;
+  }
+  .navbar .hamburguer {
+    display: block;
+  }
+  .navbar .brand {
+    width: 50px;
+    background-size: 50px auto;
+    padding: 20px 24px;
+    position: absolute;
+    top: 0;
+    left: -98px;
+    display: block;
+  }
+  .navbar .navbar-primary {
+    position: absolute;
+    display: block;
+    background: #ffffff;
+    left: -80%;
+    width: 80%;
+    min-height: 83vh;
+    top: 60px;
+    padding-bottom: 48px;
+  }
+  .navbar .navbar-primary li {
+    display: block;
+    position: relative;
+  }
+  .navbar .navbar-primary li.copyright {
+    position: absolute;
+  }
+  .navbar .navbar-primary li span,
+  .navbar .navbar-primary li a {
+    padding: 12px 24px;
+    color: #000000;
+  }
+  .navbar .navbar-primary li span:hover,
+  .navbar .navbar-primary li a:hover {
+    background-color: #eeeeee;
+  }
+  .navbar .navbar-primary li .navbar-secondary {
+    position: relative;
+  }
+  .navbar.menu-active {
+    /*If menu is active, push it from left to rigth*/
+  }
+  .navbar.menu-active .navbar-primary {
+    left: 0;
+  }
+  .navbar.menu-active .brand {
+    left: 0;
+  }
+  .navbar.menu-active .hamburguer {
+    /*close*/
+    background-image: url('/images/toggle-close.svg');
+    background-position: center center;
+    padding: 20px 24px;
+    width: 24px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    position: absolute;
+    top: 0;
+    margin-left: -72px;
+    left: 100%;
+  }
+}
 /* End Navbar styles*/
+/*overlay*/
+#overlay {
+  background: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  display: none;
+}
+/*End overlay*/
 /* Normalizing some styles for chrome*/
+p,
 h1,
 h2,
 h3,
@@ -135,10 +328,10 @@ a {
 li {
   list-style: none;
 }
+p {
+  margin-bottom: 1em;
+}
 /* End Normalizing some styles for chrome*/
-/************************************************/
-/******            MOBILE DEVICES           ******/
-/************************************************/
 /* Typography */
 /* Navigation Typography */
 .navbar .navbar-primary {

@@ -1,18 +1,24 @@
 /*Content*/
-body{
-  background-image: url('/images/background-image.jpg');
-  background-position: center 72px;
-  background-repeat: no-repeat;
-}
 .content{
-  max-width: 968px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-article{
-  padding: 60px 0;
-}
+  min-width: 100vw;
+  .container{
+    max-width: 968px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  article{
+    padding: 60px 0;
+  }
+  -webkit-transition: margin-left @pushTime ease-in-out;
+  transition: margin-left @pushTime ease-in-out;
 
-
+}
+@media(max-width:@mobile-size){
+  .content{
+    &.menu-active{
+      margin-left: @mobileNavWidth;
+    }
+  }
+}
 
 /*End Content*/
