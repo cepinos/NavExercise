@@ -73,6 +73,7 @@
   height: 16px;
   width: 100%;
   padding: 16px 24px;
+  display: none;
 }
 /* Fonts */
 @font-face {
@@ -187,6 +188,9 @@
   display: inline-block;
   vertical-align: middle;
 }
+.navbar .navbar-primary li.copyright {
+  display: none;
+}
 .navbar .navbar-primary li span,
 .navbar .navbar-primary li a {
   -webkit-user-select: none;
@@ -206,6 +210,9 @@
   color: #ec008c;
 }
 .navbar .navbar-primary li.active .navbar-secondary {
+  display: block;
+}
+.navbar .navbar-primary li.active .navbar-secondary li {
   display: block;
 }
 .navbar .navbar-primary li.active .navbar-secondary li a {
@@ -260,6 +267,7 @@
   }
   .navbar .navbar-primary li.copyright {
     position: absolute;
+    display: block;
   }
   .navbar .navbar-primary li span,
   .navbar .navbar-primary li a {

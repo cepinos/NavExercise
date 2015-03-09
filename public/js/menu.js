@@ -21,6 +21,7 @@ var menu = (function(d, w){
   },
   initializeAttributes = function(){
     primaryMenuItems = d.querySelectorAll('.navbar-primary > li');
+    primaryMenu = d.querySelector('.navbar-primary');
     overlay = d.getElementById('overlay');
     hamburguer = d.getElementById('hamburguer');
     navbar = d.getElementById('navbar');
@@ -122,10 +123,39 @@ var menu = (function(d, w){
       hideMenu();
       hideSecondaryAndOverlay();
     });
+  },
+
+
+
+  addItems = function(menu, menuObject){
+    menuObject = menuObject || primaryMenu;
+    for (var i = 0; i <= menu.items.length - 1; i++) {
+      var item = menu.items[i],
+      li = d.createElement('li'),
+      a = d.createElement('a'),
+      ul = d.createElement('ul'),
+      label = document.createTextNode(item.label);
+      ul.setAttribute('class', 'navbar-secondary');
+      a.setAttribute('href', item.url);
+      a.appendChild(label);
+      if(item.items && item.items.length){
+        var icon = d.createElement('icon');
+        icon.setAttribute('class', 'chevron');
+        a.appendChild(icon);
+      }
+      li.appendChild(a);
+      if(item.items){
+        addItems(item, ul)
+        li.appendChild(ul);
+
+      }
+      menuObject.appendChild(li);
+    };
   }
 
   // Public Api
   return {
-    "init":init
+    "init":init,
+    "addItems":addItems
   }
 })(document, window);

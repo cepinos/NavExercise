@@ -38,6 +38,9 @@
       /*Primary menu item*/
       display: inline-block;
       vertical-align: middle;
+      &.copyright{
+        display: none;
+      }
       span,
       a{
         -webkit-user-select: none;
@@ -61,6 +64,7 @@
         .navbar-secondary{
           display: block;
           li{
+            display: block;
             a{
               color: @black;
               &:hover{
@@ -124,6 +128,7 @@
         position: relative;
         &.copyright{
           position: absolute;
+          display: block;
         }
         span,
         a{
